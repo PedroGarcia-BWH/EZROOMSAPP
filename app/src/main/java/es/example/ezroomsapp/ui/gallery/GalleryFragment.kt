@@ -1,12 +1,21 @@
 package es.example.ezroomsapp.ui.gallery
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import es.example.ezroomsapp.R
 import es.example.ezroomsapp.databinding.FragmentGalleryBinding
 
 class GalleryFragment : Fragment() {
@@ -38,5 +47,11 @@ class GalleryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        // Inicializar el mapa
+        (activity as AppCompatActivity).supportActionBar?.title = "Reserva tu sala"
     }
 }

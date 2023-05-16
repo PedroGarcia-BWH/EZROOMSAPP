@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/nickname"
+                android:id="@+id/nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/nickname2"
+                android:id="@+id/apellido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -44,11 +44,11 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="Apellidos"
-                app:layout_constraintStart_toEndOf="@+id/nickname"
+                app:layout_constraintStart_toEndOf="@+id/nombre"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/nickname3"
+                android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -56,10 +56,10 @@
                 android:fontFamily="sans-serif-black"
                 android:text="Fecha "
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nickname" />
+                app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
             <TextView
-                android:id="@+id/nickname4"
+                android:id="@+id/inicioFin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
@@ -67,24 +67,24 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="Hora Inicio - Hora Salida"
-                app:layout_constraintStart_toEndOf="@+id/nickname3"
-                app:layout_constraintTop_toBottomOf="@+id/nickname2" />
+                app:layout_constraintStart_toEndOf="@+id/fecha"
+                app:layout_constraintTop_toBottomOf="@+id/apellido" />
 
             <TextView
-                android:id="@+id/nickname5"
+                android:id="@+id/sala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="Sala"
-                app:layout_constraintEnd_toStartOf="@+id/follow"
+                app:layout_constraintEnd_toStartOf="@+id/see"
                 app:layout_constraintHorizontal_bias="0.72"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/follow"
+                android:id="@+id/see"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ver"

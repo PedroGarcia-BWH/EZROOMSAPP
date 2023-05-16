@@ -15,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import es.example.ezroomsapp.AddReservaActivity
 import es.example.ezroomsapp.R
 import es.example.ezroomsapp.databinding.FragmentGalleryBinding
 
@@ -37,10 +38,6 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = "Salas"
-        }
         return root
     }
 
@@ -53,5 +50,11 @@ class GalleryFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         // Inicializar el mapa
         (activity as AppCompatActivity).supportActionBar?.title = "Reserva tu sala"
+        val addButon = view?.findViewById<View>(R.id.add)
+        addButon?.setOnClickListener {
+            val intent = Intent(requireContext(), AddReservaActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

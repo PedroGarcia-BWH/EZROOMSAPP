@@ -25,7 +25,6 @@ class SalaAdapter(private val salas: List<Sala>) :
             val tituloTextView: TextView = itemView.findViewById(R.id.title)
             val descripcionTextView: TextView = itemView.findViewById(R.id.description)
             val imagenImageView: ImageView = itemView.findViewById(R.id.roomImage)
-            val tablaTableLayout: TableLayout = itemView.findViewById(R.id.tableLayout)
             val boton: Button = itemView.findViewById(R.id.button)
 
         }

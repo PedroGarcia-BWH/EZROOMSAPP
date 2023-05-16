@@ -9,10 +9,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import es.example.ezroomsapp.R
 import es.example.ezroomsapp.databinding.FragmentHomeBinding
 
 import es.example.ezroomsapp.utils.ApiService
 import es.example.ezroomsapp.utils.Reserva
+import es.example.ezroomsapp.utils.Sala
+import es.example.ezroomsapp.utils.SalaAdapter
 import java.util.Date
 
 class HomeFragment : Fragment() {
@@ -33,8 +38,6 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        textView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = "Salas"
         }
@@ -50,7 +53,25 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         // Inicializar el mapa
         (activity as AppCompatActivity).supportActionBar?.title = "Nuestras salas"
-        var  apiService = context?.let { ApiService(it) }
+
+        var recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerSalas)
+        var salas = listOf(
+            Sala("Sala Shanghái", "Descripción de sala shanghai", "@drawable/shangai.png", "enlace"),
+            Sala("Sala Chernobyl", "Descripción de sala chernobyl", "@drawable/chernobyl.png", "enlace"),
+            Sala("Sala Apocalipsis", "Descripción de sala apocalipsis", "@drawable/zombie.png", "enlace")
+        )
+        var adapter = SalaAdapter(salas)
+
+        if (recyclerView != null) {
+            recyclerView.adapter = adapter
+        }
+
+        if (recyclerView != null) {
+            recyclerView.layoutManager = LinearLayoutManager(this)
+        }
+
+        //Tengo que llamar al
+        /*var  apiService = context?.let { ApiService(it) }
         apiService?.getRequest(
             onResponse = { response ->
                 // Manejar la respuesta exitosa aquí
@@ -82,6 +103,6 @@ class HomeFragment : Fragment() {
                 Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
                 textView.text = error
             }
-        )
+        )*/
     }
 }

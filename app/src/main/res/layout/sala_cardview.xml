@@ -30,9 +30,9 @@
         android:id="@+id/roomImage"
         android:layout_width="314dp"
         android:layout_height="224dp"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="55dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="57dp" />
 
     <TableLayout
         android:id="@+id/tableLayout"

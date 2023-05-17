@@ -9,11 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TableLayout
-import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import es.example.ezroomsapp.R
 
@@ -42,7 +39,17 @@ class SalaAdapter(private val salas: List<Sala>) :
 
         holder.tituloTextView.text = currentSala.titulo
         holder.descripcionTextView.text = currentSala.descripcion
-        holder.imagenImageView.setImageResource(currentSala.img.toInt())
+
+        val fileName = currentSala.img.substring(
+            currentSala.img.lastIndexOf("/") + 1,
+            currentSala.img.lastIndexOf(".")
+        )
+        try {
+            val resourceId = fileName.toInt()
+            holder.imagenImageView.setImageResource(resourceId)
+        } catch (e: NumberFormatException) {
+            // Manejar el error cuando el nombre de archivo no es un número válido
+        }
 
         holder.boton.setOnClickListener {
             val enlace = currentSala.enlace

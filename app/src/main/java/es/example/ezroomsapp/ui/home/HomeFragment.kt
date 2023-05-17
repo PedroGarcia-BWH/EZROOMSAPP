@@ -38,9 +38,7 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = "Salas"
-        }
+
         return root
     }
 
@@ -54,7 +52,7 @@ class HomeFragment : Fragment() {
         // Inicializar el mapa
         (activity as AppCompatActivity).supportActionBar?.title = "Nuestras salas"
 
-        var recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerSalas)
+
         var salas = listOf(
             Sala("Sala Shanghái", "Descripción de sala shanghai", "@drawable/shangai.png", "enlace"),
             Sala("Sala Chernobyl", "Descripción de sala chernobyl", "@drawable/chernobyl.png", "enlace"),
@@ -62,13 +60,12 @@ class HomeFragment : Fragment() {
         )
         var adapter = SalaAdapter(salas)
 
-        if (recyclerView != null) {
-            recyclerView.adapter = adapter
-        }
+        var recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerSalas)
+        recyclerView?.adapter = adapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity)
 
-        if (recyclerView != null) {
-            recyclerView.layoutManager = LinearLayoutManager(this)
-        }
+
+
 
         //Tengo que llamar al
         /*var  apiService = context?.let { ApiService(it) }

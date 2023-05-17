@@ -8,6 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
+        compileSdkPreview = "UpsideDownCake"
         applicationId "es.example.ezroomsapp"
         minSdk 30
         targetSdk 33

@@ -9,10 +9,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import es.example.ezroomsapp.R
 import es.example.ezroomsapp.databinding.FragmentHomeBinding
 
 import es.example.ezroomsapp.utils.ApiService
 import es.example.ezroomsapp.utils.Reserva
+import es.example.ezroomsapp.utils.Sala
+import es.example.ezroomsapp.utils.SalaAdapter
 import java.util.Date
 
 class HomeFragment : Fragment() {
@@ -34,10 +39,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        textView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = "Salas"
-        }
         return root
     }
 
@@ -50,6 +51,39 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         // Inicializar el mapa
         (activity as AppCompatActivity).supportActionBar?.title = "Nuestras salas"
+
+
+        var salas = listOf(
+            Sala("Sala Shanghái", "Descripción de sala shanghai", "@drawable/shangai.png", "enlace"),
+            Sala("Sala Chernobyl", "Descripción de sala chernobyl", "@drawable/chernobyl.png", "enlace"),
+            Sala("Sala Apocalipsis", "Descripción de sala apocalipsis", "@drawable/zombie.png", "enlace")
+        )
+        var adapter = SalaAdapter(salas)
+
+        var recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerSalas)
+        recyclerView?.adapter = adapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity)
+
+
+
+
+        //Tengo que llamar al
+        /*var  apiService = context?.let { ApiService(it) }
+        apiService?.getRequest(
+            onResponse = { response ->
+                // Manejar la respuesta exitosa aquí
+                response?.let {
+                    val message = it.getString("message")
+                    Toast.makeText(context, "Success: " + message, Toast.LENGTH_SHORT).show()
+                    textView.text = message
+                }
+            },
+            onError = { error ->
+                // Manejar errores aquí
+                   Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+                    textView.text = error
+            }
+        )
 
        /* apiService?.postReservation(
             Reserva("pedro", "garcia", "1234V", "pedro@uca.es", Date().toString(), "Sala Shangai", "2", "123423542", "Carlos Maricon", "2"),

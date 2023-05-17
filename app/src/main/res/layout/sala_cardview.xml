@@ -3,61 +3,201 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/articleCard"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
-        app:cardCornerRadius="12dp"
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="97dp"
+        android:layout_height="28dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Nombre sala"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="354dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="268dp"
+        android:text="Descripción de la sala"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout" />
+
+    <ImageView
+        android:id="@+id/roomImage"
+        android:layout_width="314dp"
+        android:layout_height="224dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="354dp"
+        android:layout_height="183dp"
+        android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="454dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/articleCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/Portada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="TODO"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/baseline_account_circle_24" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_row_border"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="188dp"
-                android:fontFamily="sans-serif-black"
-                android:text="titulo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Oferta"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="descripcion"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                app:layout_constraintVertical_bias="0.24000001"
-                tools:layout_editor_absoluteX="47dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio/Hora"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_row_border"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio por 1 hora(s)" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+
+                android:padding="5dp"
+                android:text="100€" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_row_border"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio por 2 hora(s)" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+
+                android:padding="5dp"
+                android:text="95€" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_row_border"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio por 3 hora(s)" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+
+                android:padding="5dp"
+                android:text="90€" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_row_border"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio por 4 hora(s)" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+
+                android:padding="5dp"
+                android:text="88€" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_row_border"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio por 4+ hora(s)" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/table_cell_border"
+                android:gravity="center"
+
+                android:padding="5dp"
+                android:text="85€" />
+        </TableRow>
+
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descargar info"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="231dp"
+        tools:layout_editor_absoluteY="664dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

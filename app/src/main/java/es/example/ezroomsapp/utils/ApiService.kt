@@ -5,15 +5,20 @@ import android.net.http.HttpResponseCache.install
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.HttpClient
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
+import com.google.gson.annotations.SerializedName
 import io.ktor.client.engine.android.Android
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
+import org.json.JSONArray
 import org.json.JSONObject
 
 class ApiService(private val context: Context) {
@@ -22,9 +27,10 @@ class ApiService(private val context: Context) {
     }
 
     private var url = "http://192.168.0.18:8080/"
+    private val gson = Gson()
 
-    fun getRequest(onResponse: (response: JSONObject?) -> Unit, onError: (error: String) -> Unit) {
-        val request = JsonObjectRequest(
+    fun getRequest(onResponse: (response: JSONArray?) -> Unit, onError: (error: String) -> Unit) {
+        val request = JsonArrayRequest(
             Request.Method.GET, url + "reservas/", null,
             Response.Listener { response ->
                 onResponse(response)

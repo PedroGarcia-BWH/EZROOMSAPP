@@ -32,10 +32,10 @@ class ApiService(private val context: Context) {
     fun getRequest(onResponse: (response: JSONArray?) -> Unit, onError: (error: String) -> Unit) {
         val request = JsonArrayRequest(
             Request.Method.GET, url + "reservas/", null,
-            Response.Listener { response ->
+            { response ->
                 onResponse(response)
             },
-            Response.ErrorListener { error ->
+            { error ->
                 onError(error.message ?: "Unknown error occurred")
             }
         )
@@ -45,10 +45,10 @@ class ApiService(private val context: Context) {
     fun getRequestById(_id: String, onResponse: (response: JSONArray?) -> Unit, onError: (error: String) -> Unit) {
         val request = JsonArrayRequest(
             Request.Method.GET, url + "reservas/$_id", null,
-            Response.Listener { response ->
+            { response ->
                 onResponse(response)
             },
-            Response.ErrorListener { error ->
+            { error ->
                 onError(error.message ?: "Unknown error occurred")
             }
         )
@@ -74,10 +74,10 @@ class ApiService(private val context: Context) {
         }
 
         val request = JsonObjectRequest(Request.Method.POST, url + "reservas/add", requestBody,
-            Response.Listener { response ->
+            { response ->
                 onResponse(response)
             },
-            Response.ErrorListener { error ->
+            { error ->
                 onError(error.message ?: "Unknown error occurred")
             }
         )
@@ -103,10 +103,10 @@ class ApiService(private val context: Context) {
         }
 
         val request = JsonObjectRequest(Request.Method.PUT, url + "reservas/update/${reserva._id}", requestBody,
-            Response.Listener { response ->
+            { response ->
                 onResponse(response)
             },
-            Response.ErrorListener { error ->
+            { error ->
                 onError(error.message ?: "Unknown error occurred")
             }
         )
@@ -119,10 +119,10 @@ class ApiService(private val context: Context) {
         onError: (error: String) -> Unit
     ) {
         val request = JsonObjectRequest(Request.Method.DELETE, url + "reservas/delete/$_id", null,
-            Response.Listener { response ->
+            { response ->
                 onResponse(response)
             },
-            Response.ErrorListener { error ->
+            { error ->
                 onError(error.message ?: "Unknown error occurred")
             }
         )

@@ -54,15 +54,69 @@ class HomeFragment : Fragment() {
 
 
         var salas = listOf(
-            Sala("Sala Shanghái", "Descripción de sala shanghai", "@drawable/shangai.png", "enlace"),
-            Sala("Sala Chernobyl", "Descripción de sala chernobyl", "@drawable/chernobyl.png", "enlace"),
-            Sala("Sala Apocalipsis", "Descripción de sala apocalipsis", "@drawable/zombie.png", "enlace")
+            Sala(
+                "Sala Shanghái",
+                "Descripción de sala shanghai",
+                "@drawable/shangai.png",
+                "enlace"
+            ),
+            Sala(
+                "Sala Chernobyl",
+                "Descripción de sala chernobyl",
+                "@drawable/chernobyl.png",
+                "enlace"
+            ),
+            Sala(
+                "Sala Apocalipsis",
+                "Descripción de sala apocalipsis",
+                "@drawable/zombie.png",
+                "enlace"
+            )
         )
         var adapter = SalaAdapter(salas)
 
         var recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerSalas)
         recyclerView?.adapter = adapter
         recyclerView?.layoutManager = LinearLayoutManager(activity)
-
     }
 }
+
+
+
+        //Tengo que llamar al
+        /*var  apiService = context?.let { ApiService(it) }
+        apiService?.getRequest(
+            onResponse = { response ->
+                // Manejar la respuesta exitosa aquí
+                response?.let {
+                    val message = it.getString("message")
+                    Toast.makeText(context, "Success: " + message, Toast.LENGTH_SHORT).show()
+                    textView.text = message
+                }
+            },
+            onError = { error ->
+                // Manejar errores aquí
+                   Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+                    textView.text = error
+            }
+        )
+
+       /* apiService?.postReservation(
+            Reserva("pedro", "garcia", "1234V", "pedro@uca.es", Date().toString(), "Sala Shangai", "2", "123423542", "Carlos Maricon", "2"),
+            onResponse = { response ->
+                // Manejar la respuesta exitosa aquí
+                response?.let {
+                   // val message = it.getString("message")
+                    //Toast.makeText(context, "Success: " + message, Toast.LENGTH_SHORT).show()
+                    //textView.text = message
+                }
+            },
+            onError = { error ->
+                // Manejar errores aquí
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+                textView.text = error
+            }
+        )*/
+    }
+}
+         */

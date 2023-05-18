@@ -1,31 +1,22 @@
 package es.example.ezroomsapp.ui.gallery
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import es.example.ezroomsapp.AddReservaActivity
 import es.example.ezroomsapp.R
 import es.example.ezroomsapp.databinding.FragmentGalleryBinding
 import es.example.ezroomsapp.utils.ApiService
 import es.example.ezroomsapp.utils.Reserva
 import es.example.ezroomsapp.utils.ReservaAdapter
-import org.json.JSONArray
 
 class GalleryFragment : Fragment() {
 
@@ -58,7 +49,7 @@ class GalleryFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         // Inicializar el mapa
         (activity as AppCompatActivity).supportActionBar?.title = "Reserva tu sala"
-        val addButon = view?.findViewById<View>(R.id.add)
+        val addButon = view?.findViewById<View>(R.id.edit)
         val rvReservas = view?.findViewById<RecyclerView>(R.id.rvReservas)
         rvReservas?.layoutManager = LinearLayoutManager(activity)
         var adapter = ReservaAdapter()

@@ -64,42 +64,5 @@ class HomeFragment : Fragment() {
         recyclerView?.adapter = adapter
         recyclerView?.layoutManager = LinearLayoutManager(activity)
 
-
-
-
-        //Tengo que llamar al
-        /*var  apiService = context?.let { ApiService(it) }
-        apiService?.getRequest(
-            onResponse = { response ->
-                // Manejar la respuesta exitosa aquí
-                response?.let {
-                    val message = it.getString("message")
-                    Toast.makeText(context, "Success: " + message, Toast.LENGTH_SHORT).show()
-                    textView.text = message
-                }
-            },
-            onError = { error ->
-                // Manejar errores aquí
-                   Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
-                    textView.text = error
-            }
-        )
-
-       /* apiService?.postReservation(
-            Reserva("pedro", "garcia", "1234V", "pedro@uca.es", Date().toString(), "Sala Shangai", "2", "123423542", "Carlos Maricon", "2"),
-            onResponse = { response ->
-                // Manejar la respuesta exitosa aquí
-                response?.let {
-                   // val message = it.getString("message")
-                    //Toast.makeText(context, "Success: " + message, Toast.LENGTH_SHORT).show()
-                    //textView.text = message
-                }
-            },
-            onError = { error ->
-                // Manejar errores aquí
-                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
-                textView.text = error
-            }
-        )*/
     }
 }

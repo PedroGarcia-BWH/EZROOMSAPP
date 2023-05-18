@@ -42,7 +42,7 @@ class ReservaAdapter() : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>(
         holder.hora.text = reserva.horasReserva
         holder.seeReserva.setOnClickListener {
             val intent = Intent(context, ReservaViewActivity::class.java)
-            intent.putExtra("reserva_id", reserva._id)
+            intent.putExtra("id", reserva._id)
             context.startActivity(intent)
         }
 

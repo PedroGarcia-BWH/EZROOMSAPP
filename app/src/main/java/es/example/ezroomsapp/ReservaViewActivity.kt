@@ -2,6 +2,7 @@ package es.example.ezroomsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -93,7 +94,6 @@ class ReservaViewActivity : AppCompatActivity() {
                             jsonObject.getString("comentario"),
                             jsonObject.getString("nPersonas")
                         )
-                        Toast.makeText(this, reserva._id, Toast.LENGTH_SHORT).show()
 //                        val textView = findViewById<TextView>(R.id.textView4)
 //                        textView.text = reserva.nombre
                         idNombreLabel.hint = reserva.nombre
@@ -159,18 +159,30 @@ class ReservaViewActivity : AppCompatActivity() {
 
                 //editable mode
                 idReservaLabel.isEnabled = true
+                idReservaLabel.text = idReservaLabel.hint
                 idNombreLabel.isEnabled = true
+                idNombreLabel.text = Editable.Factory.getInstance().newEditable(idNombreLabel.hint)
                 idApellidoLabel.isEnabled = true
+                idApellidoLabel.text = Editable.Factory.getInstance().newEditable(idApellidoLabel.hint)
                 idComentarioLabel.isEnabled = true
+                idComentarioLabel.text = Editable.Factory.getInstance().newEditable(idComentarioLabel.hint)
                 idEmailLabel.isEnabled = true
+                idEmailLabel.text = Editable.Factory.getInstance().newEditable(idEmailLabel.hint)
                 idDNILabel.isEnabled = true
+                idDNILabel.text = Editable.Factory.getInstance().newEditable(idDNILabel.hint)
                 idFechaLabel.isEnabled = true
+                idFechaLabel.text = Editable.Factory.getInstance().newEditable(idFechaLabel.hint)
                 idNumeroDeOrasLabel.isEnabled = true
+                idNumeroDeOrasLabel.text = Editable.Factory.getInstance().newEditable(idNumeroDeOrasLabel.hint)
                 idNumeroDePersonasLabel.isEnabled = true
+                idNumeroDePersonasLabel.text = Editable.Factory.getInstance().newEditable(idNumeroDePersonasLabel.hint)
                 idPhoneNumberLabel.isEnabled = true
+                idPhoneNumberLabel.text = Editable.Factory.getInstance().newEditable(idPhoneNumberLabel.hint)
                 idSalaLabel.isEnabled = true
+                idSalaLabel.text = idSalaLabel.hint
 
                 idReservaLabel.text = "Edit Reserva!"
+
                 uploadButton.show()
 
                 editableText = !editableText
@@ -180,6 +192,7 @@ class ReservaViewActivity : AppCompatActivity() {
         uploadButton.setOnClickListener() {
             apiService.putReservation(
                 Reserva(
+                    id,
                     idNombreLabel.text.toString(),
                     idApellidoLabel.text.toString(),
                     idDNILabel.text.toString(),
@@ -193,8 +206,7 @@ class ReservaViewActivity : AppCompatActivity() {
                 onResponse = { response ->
                     // Manejar la respuesta exitosa aquí
                     response?.let {
-                        val message = it.getString("Resersa correctly updated")
-                        Toast.makeText(this, "Success: " + message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Reserva actualizada con éxito" , Toast.LENGTH_SHORT).show()
 //                        textView.text = message
                         finish()
 

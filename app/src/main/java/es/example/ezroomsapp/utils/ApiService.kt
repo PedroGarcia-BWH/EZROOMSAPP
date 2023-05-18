@@ -26,7 +26,7 @@ class ApiService(private val context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
-    private var url = "http://10.182.109.110:8080/"
+    private var url = "http://192.168.0.18:8080/"
     private val gson = Gson()
 
     fun getRequest(onResponse: (response: JSONArray?) -> Unit, onError: (error: String) -> Unit) {

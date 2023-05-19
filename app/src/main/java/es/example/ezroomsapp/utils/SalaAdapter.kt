@@ -40,13 +40,9 @@ class SalaAdapter(private val salas: List<Sala>) :
         holder.tituloTextView.text = currentSala.titulo
         holder.descripcionTextView.text = currentSala.descripcion
 
-        val fileName = currentSala.img.substring(
-            currentSala.img.lastIndexOf("/") + 1,
-            currentSala.img.lastIndexOf(".")
-        )
+
         try {
-            val resourceId = fileName.toInt()
-            holder.imagenImageView.setImageResource(resourceId)
+            holder.imagenImageView.setImageResource(currentSala.img)
         } catch (e: NumberFormatException) {
             // Manejar el error cuando el nombre de archivo no es un número válido
         }

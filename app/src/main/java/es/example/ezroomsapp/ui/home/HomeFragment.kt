@@ -54,9 +54,9 @@ class HomeFragment : Fragment() {
 
 
         var salas = listOf(
-            Sala("Sala Shanghái", "Descripción de sala shanghai", "@drawable/shangai.png", "enlace"),
-            Sala("Sala Chernobyl", "Descripción de sala chernobyl", "@drawable/chernobyl.png", "enlace"),
-            Sala("Sala Apocalipsis", "Descripción de sala apocalipsis", "@drawable/zombie.png", "enlace")
+            Sala("Sala Shanghái", "La habitación de escape room llamada Shanghái es un emocionante juego de escape diseñado para sumergir a los jugadores en una aventura ambientada en la vibrante y frenética ciudad de Shanghái, China. Los jugadores se encontrarán encerrados en una habitación decorada con elementos temáticos chinos, como farolillos rojos y dragones dorados, mientras buscan pistas y resuelven acertijos para escapar antes de que se acabe el tiempo. Con la música china de fondo y una variedad de desafíos ingeniosos, Shanghai ofrece una experiencia emocionante y desafiante para los amantes de los juegos de escape.", R.drawable.shangai, "enlace"),
+            Sala("Sala Chernobyl", "La habitación de escape room llamada Chernobyl es un juego de escape emocionante que se desarrolla en el escenario de la central nuclear de Chernóbil en Ucrania, después del desastre nuclear ocurrido en 1986. Los jugadores se encuentran encerrados en una habitación que simula el interior de la central nuclear, con elementos decorativos que recrean la atmósfera post-apocalíptica del lugar. Los jugadores deberán buscar pistas, resolver acertijos y tomar decisiones críticas para evitar la exposición a la radiación y escapar antes de que se agote el tiempo. Con un ambiente tenso y desafiante, Chernobyl ofrece una experiencia única y emocionante para los amantes de los juegos de escape con temáticas de ciencia ficción y aventuras post-apocalípticas.", R.drawable.chernobyl, "enlace"),
+            Sala("Sala Apocalipsis", "La habitación de escape room ambientada en un bunker en un apocalipsis zombie es un juego de escape emocionante que sitúa a los jugadores en un refugio subterráneo durante un brote de zombies. Los jugadores tendrán que buscar pistas, resolver acertijos y trabajar en equipo para encontrar una salida segura antes de que los zombies los encuentren. El escenario está decorado para parecer un refugio subterráneo, con elementos temáticos como suministros de emergencia y armas improvisadas para defenderse de los zombies.", R.drawable.zombie, "enlace")
         )
         var adapter = SalaAdapter(salas)
 
@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
             }
         )
 
-       /* apiService?.postReservation(
+        apiService?.postReservation(
             Reserva("pedro", "garcia", "1234V", "pedro@uca.es", Date().toString(), "Sala Shangai", "2", "123423542", "Carlos Maricon", "2"),
             onResponse = { response ->
                 // Manejar la respuesta exitosa aquí

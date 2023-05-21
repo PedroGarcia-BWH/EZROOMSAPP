@@ -6,12 +6,12 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="422dp"
-        android:layout_height="90dp"
+        android:layout_width="398dp"
+        android:layout_height="149dp"
 
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
 
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
         app:cardBackgroundColor="#94B3FD"
         app:cardElevation="1dp"
@@ -29,60 +29,47 @@
                 android:id="@+id/nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
-                android:text="Nombre"
+                android:text="Nombre: "
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/apellido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
-                android:text="Apellidos"
-                app:layout_constraintStart_toEndOf="@+id/nombre"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
-                android:text="Fecha "
+                android:text="Fecha:  "
+                app:layout_constraintBottom_toTopOf="@+id/inicioFin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nombre" />
+                app:layout_constraintTop_toBottomOf="@+id/sala" />
 
             <TextView
                 android:id="@+id/inicioFin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
-                android:text="Hora Inicio - Hora Salida"
-                app:layout_constraintStart_toEndOf="@+id/fecha"
-                app:layout_constraintTop_toBottomOf="@+id/apellido" />
+                android:text="Hora Inicio /Salida: "
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/sala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="40dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
-                android:text="Sala"
+                android:text="Sala: "
                 app:layout_constraintEnd_toStartOf="@+id/see"
-                app:layout_constraintHorizontal_bias="0.72"
+                app:layout_constraintHorizontal_bias="0.034"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,10 +77,12 @@
                 android:id="@+id/see"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:text="Ver"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.49" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

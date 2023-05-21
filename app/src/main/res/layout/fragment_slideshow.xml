@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="Cómo llegar"
+        android:text="Cómo llegar a EZROOMS"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/map" />
 
@@ -36,7 +36,7 @@
         android:id="@+id/btnBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="Bus"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +46,8 @@
         android:id="@+id/btnTren"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:text="Tren"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBus" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBus"
+        app:layout_constraintTop_toTopOf="@+id/btnBus" />
 </androidx.constraintlayout.widget.ConstraintLayout>

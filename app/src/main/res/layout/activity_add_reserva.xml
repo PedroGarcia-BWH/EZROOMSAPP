@@ -120,7 +120,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="Numero de oras"
                 android:ems="10"
-                android:hint="Numero de oras"
+                android:hint="Número de horas"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="numero de personas"
                 android:ems="10"
-                android:hint="Numero de personas"
+                android:hint="Número de personas"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -147,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="phone number"
                 android:ems="10"
-                android:hint="Phone"
+                android:hint="Teléfono"
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,22 +177,20 @@
                     android:id="@+id/idSala1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sala1"
-                    tools:text="Sala1" />
+                    android:text="Sala Shanghái" />
 
                 <RadioButton
                     android:id="@+id/idSala2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sala2"
-                    tools:text="Sala2" />
+                    android:text="Sala Chernobyl" />
 
                 <RadioButton
                     android:id="@+id/idSala3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="48dp"
-                    android:text="Sala3" />
+                    android:text="Sala Apocalipsis" />
             </RadioGroup>
 
             <Button
@@ -201,12 +199,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:text="Button"
+                android:text="Realizar Reserva"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idRadioGroup"
-                tools:text="ENVIAR" />
+                app:layout_constraintTop_toBottomOf="@+id/idRadioGroup" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

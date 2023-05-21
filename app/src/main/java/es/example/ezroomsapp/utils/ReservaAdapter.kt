@@ -11,6 +11,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import es.example.ezroomsapp.R
 import es.example.ezroomsapp.ReservaViewActivity
+import java.text.SimpleDateFormat
+import java.time.Duration
+import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Date
+import java.util.Locale
 
 class ReservaAdapter() : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
     private var reservas: List<Reserva> = emptyList()
@@ -35,11 +42,24 @@ class ReservaAdapter() : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>(
     override fun onBindViewHolder(holder: ReservaViewHolder, position: Int) {
         val reserva = reservas[position]
 
-        holder.nombre.text = reserva.nombre
-        holder.apellido.text = reserva.apellidos
-        holder.sala.text = reserva.sala
-        holder.fecha.text = reserva.fechaReserva
-        holder.hora.text = reserva.horasReserva
+        holder.nombre.text = "Nombre: ${reserva.nombre} ${reserva.apellidos}"
+        holder.sala.text = "Sala: ${reserva.sala}"
+
+        val formatoActual = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT'Z yyyy", Locale.ENGLISH)
+        val fechaReserva = formatoActual.parse(reserva.fechaReserva)
+
+        val formatoDeseado = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val fechaFormateada = formatoDeseado.format(fechaReserva)
+
+        val formatoHora = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val horaFormateada = formatoHora.format(fechaReserva)
+
+        val horasReserva = reserva.horasReserva.toLong()
+        val horaFinal = formatoHora.format(Date(fechaReserva.time + horasReserva * 3600000))
+
+        holder.fecha.text = "Fecha: $fechaFormateada"
+        holder.hora.text = "Hora Inicio / Salida: $horaFormateada / $horaFinal"
+
         holder.seeReserva.setOnClickListener {
             val intent = Intent(context, ReservaViewActivity::class.java)
             intent.putExtra("id", reserva._id)
@@ -54,7 +74,6 @@ class ReservaAdapter() : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>(
 
     class ReservaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val nombre = itemView.findViewById<TextView>(R.id.nombre)
-        val apellido = itemView.findViewById<TextView>(R.id.apellido)
         val sala = itemView.findViewById<TextView>(R.id.sala)
         val fecha = itemView.findViewById<TextView>(R.id.fecha)
         val hora = itemView.findViewById<TextView>(R.id.inicioFin)

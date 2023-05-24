@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Reserva"
+                android:text="@string/reserva"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
                 android:layout_marginTop="5dp"
                 android:autofillHints="Nombre"
                 android:ems="10"
-                android:hint="Nombre"
+                android:hint="@string/nombre"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="Apellido"
                 android:ems="10"
-                android:hint="Apelido"
+                android:hint="@string/apellido"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -66,7 +66,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="Comentario"
                 android:ems="10"
-                android:hint="Comentario"
+                android:hint="@string/comentario"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -80,7 +80,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="Email"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="DNI"
                 android:ems="10"
-                android:hint="DNI"
+                android:hint="@string/dni"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -107,7 +107,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="Fecha"
                 android:ems="10"
-                android:hint="Fecha de entrada"
+                android:hint="@string/entrada"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +120,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="Numero de oras"
                 android:ems="10"
-                android:hint="Número de horas"
+                android:hint="@string/horas"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="numero de personas"
                 android:ems="10"
-                android:hint="Número de personas"
+                android:hint="@string/personas"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -147,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="phone number"
                 android:ems="10"
-                android:hint="Teléfono"
+                android:hint="@string/telefono"
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +162,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idPhoneNumber"
-                tools:text="Sala" />
+                tools:text="@string/salas" />
 
             <RadioGroup
                 android:id="@+id/idRadioGroup"
@@ -177,20 +177,20 @@
                     android:id="@+id/idSala1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sala Shanghái" />
+                    android:text="@string/shanghai" />
 
                 <RadioButton
                     android:id="@+id/idSala2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sala Chernobyl" />
+                    android:text="@string/chernobyl" />
 
                 <RadioButton
                     android:id="@+id/idSala3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="48dp"
-                    android:text="Sala Apocalipsis" />
+                    android:text="@string/apocalipsis" />
             </RadioGroup>
 
             <Button
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:text="Realizar Reserva"
+                android:text="@string/reservar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

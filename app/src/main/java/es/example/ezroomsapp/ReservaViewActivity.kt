@@ -1,5 +1,11 @@
 package es.example.ezroomsapp
 
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -8,7 +14,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import es.example.ezroomsapp.utils.ApiService
 import es.example.ezroomsapp.utils.Reserva
 import java.util.*
@@ -121,7 +129,10 @@ class ReservaViewActivity : AppCompatActivity() {
                     onResponse = { response ->
                         // Manejar la respuesta exitosa aquí
                         response?.let {
-                          Toast.makeText(this, "Reserva eliminada", Toast.LENGTH_SHORT).show()
+                            Snackbar.make(delete, "Reserva eliminada correctamente", Snackbar.LENGTH_LONG)
+                                .setAction("Cerrar") { }
+                                .show()
+
                             finish()
                         }
                     },
@@ -206,8 +217,31 @@ class ReservaViewActivity : AppCompatActivity() {
                 onResponse = { response ->
                     // Manejar la respuesta exitosa aquí
                     response?.let {
-                        Toast.makeText(this, "Reserva actualizada con éxito" , Toast.LENGTH_SHORT).show()
-//                        textView.text = message
+                        val notificationId = 1
+                    // Crear un objeto NotificationManager
+                        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                    // Crear un Intent que se ejecutará cuando se haga clic en la notificación
+                        val intent = Intent(this, MainActivity::class.java)
+                        val pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                                                PendingIntent.FLAG_UPDATE_CURRENT)
+                    // Crear un estilo de notificación personalizado
+                        val style = NotificationCompat.BigTextStyle().bigText("Has editado la reserva con $id correctamente")
+
+                        val builder = NotificationCompat.Builder(this, "canal_id")
+                            .setSmallIcon(R.drawable.logo_background)
+                            .setContentTitle("RESERVA")
+                            .setContentText("Has editado la reserva con $id correctamente")
+                                .setStyle(style)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                .setColor(Color.BLUE)
+                                .setTicker("Nuevo mensaje")
+                                .setContentInfo("Info adicional")
+                                .setWhen(System.currentTimeMillis())
+                                .setContentIntent(pendingIntent)
+                                .setAutoCancel(true)
+                                // Mostrar la notificación
+                        notificationManager.notify(notificationId, builder.build())
                         finish()
 
                     }

@@ -66,22 +66,22 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
+                android:fontFamily="@font/fira_bold"
                 android:gravity="center"
                 android:padding="5dp"
-                android:fontFamily="@font/fira_bold"
+                android:text="@string/oferta"
                 android:textSize="14sp"
-                android:text="Oferta"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
+                android:fontFamily="@font/fira_bold"
                 android:gravity="center"
                 android:padding="5dp"
-                android:fontFamily="@font/fira_bold"
+                android:text="@string/precio"
                 android:textSize="14sp"
-                android:text="Precio/Hora"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -228,7 +228,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Descargar info"
+        android:text="@string/descargar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"

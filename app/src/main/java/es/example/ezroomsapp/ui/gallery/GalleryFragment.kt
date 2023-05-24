@@ -2,10 +2,12 @@ package es.example.ezroomsapp.ui.gallery
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -59,43 +61,55 @@ class GalleryFragment : Fragment() {
             startActivity(intent)
         }
 
-        var  apiService = context?.let { ApiService(it) }
+        val apiService = context?.let { ApiService(it) }
         var reservas: MutableList<Reserva> = mutableListOf()
-        apiService?.getRequest(
-            onResponse = { response ->
-                // Manejar la respuesta exitosa aquí
-                response?.let {
-                    val jsonArray = response
 
-                    val reservas = mutableListOf<Reserva>() // Crear una nueva lista de reservas
+        val handler = Handler()
 
-                    for (i in 0 until jsonArray.length()) {
-                        val jsonObject = jsonArray.getJSONObject(i)
-                        val reserva = Reserva(
-                            jsonObject.getString("_id"),
-                            jsonObject.getString("nombre"),
-                            jsonObject.getString("apellidos"),
-                            jsonObject.getString("dni"),
-                            jsonObject.getString("email"),
-                            jsonObject.getString("fechaReserva"),
-                            jsonObject.getString("sala"),
-                            jsonObject.getString("horasReserva"),
-                            jsonObject.getString("phone"),
-                            jsonObject.getString("comentario"),
-                            jsonObject.getString("nPersonas")
-                        )
+        val runnable = object : Runnable {
+            override fun run() {
+                apiService?.getRequest(
+                    onResponse = { response ->
+                        // Manejar la respuesta exitosa aquí
+                        response?.let {
+                            val jsonArray = response
 
-                        reservas.add(reserva)
+                            val nuevasReservas = mutableListOf<Reserva>() // Crear una nueva lista de reservas
+
+                            for (i in 0 until jsonArray.length()) {
+                                val jsonObject = jsonArray.getJSONObject(i)
+                                val reserva = Reserva(
+                                    jsonObject.getString("_id"),
+                                    jsonObject.getString("nombre"),
+                                    jsonObject.getString("apellidos"),
+                                    jsonObject.getString("dni"),
+                                    jsonObject.getString("email"),
+                                    jsonObject.getString("fechaReserva"),
+                                    jsonObject.getString("sala"),
+                                    jsonObject.getString("horasReserva"),
+                                    jsonObject.getString("phone"),
+                                    jsonObject.getString("comentario"),
+                                    jsonObject.getString("nPersonas")
+                                )
+
+                                nuevasReservas.add(reserva)
+                            }
+
+                            // Actualizar los datos del adaptador con la nueva lista de reservas
+                            (rvReservas?.adapter as? ReservaAdapter)?.setData(nuevasReservas)
+                        }
+                    },
+                    onError = { error ->
+                        Log.d("Error", error)
+                        Toast.makeText(context, "Error $error", Toast.LENGTH_SHORT).show()
                     }
+                )
 
-                    // Actualizar los datos del adaptador con la nueva lista de reservas
-                    (rvReservas?.adapter as? ReservaAdapter)?.setData(reservas)
-                }
-            },
-            onError = { error ->
-                Log.d("Error", error)
+                handler.postDelayed(this, 5000) // Ejecutar el código cada 5 segundos
             }
-        )
+        }
+
+        handler.postDelayed(runnable,1)
 
     }
 }

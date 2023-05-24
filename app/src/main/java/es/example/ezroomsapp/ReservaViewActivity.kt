@@ -1,11 +1,13 @@
 package es.example.ezroomsapp
 
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -118,6 +120,7 @@ class ReservaViewActivity : AppCompatActivity() {
                 },
                 onError = { error ->
                     Log.d("Error", error)
+                    Toast.makeText(this, "Error en la conexión para obtener la reserva", Toast.LENGTH_SHORT).show()
                 }
             )
         }
@@ -129,15 +132,13 @@ class ReservaViewActivity : AppCompatActivity() {
                     onResponse = { response ->
                         // Manejar la respuesta exitosa aquí
                         response?.let {
-                            Snackbar.make(delete, "Reserva eliminada correctamente", Snackbar.LENGTH_LONG)
-                                .setAction("Cerrar") { }
-                                .show()
-
+                            Toast.makeText(this, "Reserva eliminada correctamente", Toast.LENGTH_SHORT).show()
                             finish()
                         }
                     },
                     onError = { error ->
                         Log.d("Error", error)
+                        Toast.makeText(this, "Error en la conexión para eliminar la reserva", Toast.LENGTH_SHORT).show()
                     }
                 )
             }
@@ -218,29 +219,43 @@ class ReservaViewActivity : AppCompatActivity() {
                     // Manejar la respuesta exitosa aquí
                     response?.let {
                         val notificationId = 1
-                    // Crear un objeto NotificationManager
-                        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                    // Crear un Intent que se ejecutará cuando se haga clic en la notificación
-                        val intent = Intent(this, MainActivity::class.java)
-                        val pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                                                PendingIntent.FLAG_UPDATE_CURRENT)
-                    // Crear un estilo de notificación personalizado
-                        val style = NotificationCompat.BigTextStyle().bigText("Has editado la reserva con $id correctamente")
+                        val channelId = "canal_id"
+                        val channelName = "Nombre del Canal"
+                        val channelDescription = "Descripción del Canal"
 
-                        val builder = NotificationCompat.Builder(this, "canal_id")
+// Crear un objeto NotificationManager
+                        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+// Verificar si el canal de notificación ya existe (solo necesario en versiones anteriores a Android Oreo)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && notificationManager.getNotificationChannel(channelId) == null) {
+                            // Crear el canal de notificación
+                            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH).apply {
+                                description = channelDescription
+                            }
+                            notificationManager.createNotificationChannel(channel)
+                        }
+
+// Crear un Intent que se ejecutará cuando se haga clic en la notificación
+                        val intent = Intent(this, MainActivity::class.java)
+                        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+// Crear un estilo de notificación personalizado
+                        val style = NotificationCompat.BigTextStyle().bigText("Has editado la reserva con id: $id correctamente")
+
+                        val builder = NotificationCompat.Builder(this, channelId)
                             .setSmallIcon(R.drawable.logo_background)
                             .setContentTitle("RESERVA")
-                            .setContentText("Has editado la reserva con $id correctamente")
-                                .setStyle(style)
-                                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                                .setColor(Color.BLUE)
-                                .setTicker("Nuevo mensaje")
-                                .setContentInfo("Info adicional")
-                                .setWhen(System.currentTimeMillis())
-                                .setContentIntent(pendingIntent)
-                                .setAutoCancel(true)
-                                // Mostrar la notificación
+                            .setContentText("Has editado la reserva con id: $id correctamente")
+                            .setStyle(style)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .setTicker("Nuevo mensaje")
+                            .setContentInfo("Info adicional")
+                            .setWhen(System.currentTimeMillis())
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true)
+
+// Mostrar la notificación
                         notificationManager.notify(notificationId, builder.build())
                         finish()
 

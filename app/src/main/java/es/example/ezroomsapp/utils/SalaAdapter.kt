@@ -13,6 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import es.example.ezroomsapp.R
+import java.io.File
+import java.io.FileOutputStream
 
 class SalaAdapter(private val salas: List<Sala>) :
 
@@ -48,24 +50,24 @@ class SalaAdapter(private val salas: List<Sala>) :
         }
 
         holder.boton.setOnClickListener {
-            val enlace = currentSala.enlace
+            val resourceId = currentSala.enlace
+            val inputStream = holder.itemView.context.resources.openRawResource(resourceId)
+            val outputStream = FileOutputStream(File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), currentSala.nombreEnlace))
 
-            val request = DownloadManager.Request(Uri.parse(enlace))
-                .setTitle("Archivo Descargado")
-                .setDescription("Descargando archivo...")
-                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "archivo_descargado.pdf")
+            inputStream.use { input ->
+                outputStream.use { output ->
+                    input.copyTo(output)
+                }
+            }
 
-            val downloadManager = holder.itemView.context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-            val downloadId = downloadManager.enqueue(request)
-
-            // Opcional: Puedes mostrar una notificación al usuario para indicar que la descarga ha comenzado.
-            Toast.makeText(holder.itemView.context.applicationContext, "Descarga iniciada", Toast.LENGTH_SHORT).show()
-
+            // Opcional: Puedes mostrar una notificación al usuario para indicar que la descarga ha terminado.
+            Toast.makeText(holder.itemView.context.applicationContext, "Descarga completada", Toast.LENGTH_SHORT).show()
         }
 
 
     }
+
+
 
         // El método getItemCount() devuelve el número de elementos en la lista de Mascotas proporcionado en el constructor de
         // MascotaAdapter.
